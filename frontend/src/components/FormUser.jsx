@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
-// import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function FormUser() {
-  //   const [name, setName] = useState("");
+  //   const [name, setName] = useState();
+
+  const navigate = useNavigate();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -12,9 +14,10 @@ export default function FormUser() {
     const updatedData = Object.fromEntries(formData);
 
     axios
-      .put(`${import.meta.env.VITE_BACKEND_URL}/movie`, updatedData)
+      .post(`${import.meta.env.VITE_BACKEND_URL}/users`, updatedData)
       .then(() => {
         // setName(updatedData);
+        return navigate("/two");
       })
       .catch((error) => {
         console.error(error);
@@ -24,18 +27,19 @@ export default function FormUser() {
   return (
     <div className="pointer-events-auto w-screen max-w-md">
       <form
-        className="flex h-full flex-col divide-y divide-gray-200 bg-white shadow-xl"
+        className="flex h-full flex-col divide-y divide-gray-200  shadow-xl"
         onSubmit={onSubmit}
       >
         <div className="flex flex-shrink-0 justify-end px-4 py-4">
           <div>
             <div className="mt-1">
               <input
+                autoComplete="off"
                 type="text"
                 name="name"
                 id="project-name"
                 className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                placeholder="Your player name"
+                placeholder="Player Name"
               />
             </div>
           </div>

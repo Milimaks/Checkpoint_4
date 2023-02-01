@@ -1,44 +1,89 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable consistent-return */
-import { useEffect, useState } from "react";
-// import { JigsawPuzzle } from "react-jigsaw-puzzle/lib";
-// import "react-jigsaw-puzzle/lib/jigsaw-puzzle.css";
+import { useEffect, useState, useContext } from "react";
+import { JigsawPuzzle } from "react-jigsaw-puzzle/lib";
+import "react-jigsaw-puzzle/lib/jigsaw-puzzle.css";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "../sidebar/Sidebar";
 import "./content.scss";
 
+import { ContentContext } from "./ContentContext";
+
 function GameTwo() {
-  const [isActive, setIsActive] = useState(true);
+  const [seconds, setSeconds] = useState(1000);
+  const [isActived, setIsActived] = useState(true);
   const [count, setCount] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
+  const [value, setValue] = useState("");
+  const [mdp, setMdp] = useState(false);
+
+  const navigate = useNavigate();
+
+  const { setInputActived } = useContext(ContentContext);
+
+  if (value === "Spiderman") {
+    navigate("/");
+  }
 
   useEffect(() => {
-    if (isActive) {
+    if (isActived) {
       const timer = setTimeout(() => {
         setCount(count + 1);
-        setIsActive(false);
+        setIsActived(false);
       }, 2000);
       return () => clearTimeout(timer);
     }
-  }, [count, isActive]);
+  }, [count, isActived]);
+
+  const Solved = () => {
+    setInputActived(true);
+    setGameOver(true);
+  };
 
   return (
     <div className="list">
       <div className="fixed top-0 left-0">
-        <Sidebar />
+        <Sidebar
+          seconds={seconds}
+          setSeconds={setSeconds}
+          gameOver={gameOver}
+          setMdp={setMdp}
+        />
       </div>
-      {/* <div className="content pl-[20vw]">
-        {isActive ? (
+      {seconds === 0 ? (
+        <div className="flex h-screen justify-center items-center content pl-[20vw]">
           <img
-            src="https://img.lemde.fr/2022/12/22/5/0/1730/865/768/384/75/0/e968e4d_1671703423578-b5e.jpeg"
+            className="min-w-[30vw] max-w-[30vw] min-h-[50vh] max-h-[50vh]"
+            src="https://media.tenor.com/Y8cXe42GXO0AAAAd/loser-dance.gif"
             alt=""
           />
-        ) : (
-          <JigsawPuzzle
-            imageSrc="https://img.lemde.fr/2022/12/22/5/0/1730/865/768/384/75/0/e968e4d_1671703423578-b5e.jpeg"
-            rows={3}
-            columns={4}
-            onSolved={() => alert("Solved!")}
-          />
-        )}
-      </div> */}
+        </div>
+      ) : (
+        <div className="content pl-[20vw]">
+          {isActived ? (
+            <img
+              src="https://img.lemde.fr/2022/12/22/5/0/1730/865/768/384/75/0/e968e4d_1671703423578-b5e.jpeg"
+              alt=""
+            />
+          ) : (
+            <JigsawPuzzle
+              imageSrc="https://img.lemde.fr/2022/12/22/5/0/1730/865/768/384/75/0/e968e4d_1671703423578-b5e.jpeg"
+              rows={1}
+              columns={2}
+              onSolved={Solved}
+            />
+          )}
+          {mdp && (
+            <div className="modal">
+              <h1>
+                Bravo ! Tu as trouvé le mot de passe. Pour continuer, j'ai
+                besoin du mot de passe du Player Two{" "}
+              </h1>
+              <input type="text" onChange={(e) => setValue(e.target.value)} />
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

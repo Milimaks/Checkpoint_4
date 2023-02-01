@@ -1,9 +1,33 @@
 .container {
   min-width: 100vw;
   min-height: 100vh;
-  background-color: black;
+  background-image: url("https://i.imgur.com/mnRN5O4.gif");
+  background-size: cover;
+  //   animation: background-animation 10s ease-in-out infinite;
   display: flex;
   align-items: center;
+
+  //   @keyframes background-animation {
+  //     0% {
+  //       background-color: rgb(43, 39, 39);
+  //     }
+  //     25% {
+  //       background-color: rgb(68, 56, 179);
+  //     }
+  //     50% {
+  //       background-color: rgb(55, 105, 78);
+  //     }
+  //     100% {
+  //       background-color: red;
+  //     }
+  //   }
+
+  h1 {
+    width: 60%;
+    height: 10%;
+    color: white;
+    margin: 0 auto;
+  }
 
   .dashboard {
     width: 60%;
