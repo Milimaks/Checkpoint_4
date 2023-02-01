@@ -19,5 +19,9 @@
     "concurrently": "^7.0.0",
     "husky": "^7.0.0",
     "postcss": "^8.4.21"
+  },
+  "dependencies": {
+    "react-jigsaw-puzzle": "^1.0.4",
+    "react-router-dom": "^6.8.0"
   }
 }

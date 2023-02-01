@@ -1,0 +1,21 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  border-right: 0.5px solid rgb(230, 227, 227);
+  min-height: 100vh;
+  max-height: 100vh;
+  min-width: 20vw;
+  max-width: 20vw;
+  background-color: black;
+
+  .top {
+    flex: 1;
+    background-color: red;
+  }
+  .top1 {
+    flex: 1;
+    margin: 0 auto;
+    font: 2em sans-serif;
+    color: white;
+  }
+}

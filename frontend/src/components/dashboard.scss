@@ -1,0 +1,13 @@
+.container {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: black;
+  display: flex;
+  align-items: center;
+
+  .dashboard {
+    width: 60%;
+    height: 50%;
+    margin: 0 auto;
+  }
+}
