@@ -21,6 +21,7 @@
     "postcss": "^8.4.21"
   },
   "dependencies": {
+    "js-cookie": "^3.0.1",
     "react-jigsaw-puzzle": "^1.0.4",
     "react-router-dom": "^6.8.0"
   }

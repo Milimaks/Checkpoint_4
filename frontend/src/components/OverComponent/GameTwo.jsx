@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable consistent-return */
+import axios from "axios";
 import { useEffect, useState, useContext } from "react";
 import { JigsawPuzzle } from "react-jigsaw-puzzle/lib";
 import "react-jigsaw-puzzle/lib/jigsaw-puzzle.css";
@@ -8,21 +9,26 @@ import Sidebar from "../sidebar/Sidebar";
 import "./content.scss";
 
 import { ContentContext } from "./ContentContext";
+import { AuthContext } from "./authContext";
 
 function GameTwo() {
-  const [seconds, setSeconds] = useState(1000);
+  const [seconds, setSeconds] = useState(300);
   const [isActived, setIsActived] = useState(true);
   const [count, setCount] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [value, setValue] = useState("");
+  const [valueSide, setValueSide] = useState("");
   const [mdp, setMdp] = useState(false);
+
+  const mdpPuzzle = "Versavel";
 
   const navigate = useNavigate();
 
+  const { userData } = useContext(AuthContext);
   const { setInputActived } = useContext(ContentContext);
 
   if (value === "Spiderman") {
-    navigate("/");
+    navigate("/one");
   }
 
   useEffect(() => {
@@ -38,12 +44,27 @@ function GameTwo() {
   const Solved = () => {
     setInputActived(true);
     setGameOver(true);
+    const id = userData;
+    const score = seconds;
+
+    axios
+      .put(`${import.meta.env.VITE_BACKEND_URL}/users/${userData}`, {
+        id,
+        score,
+      })
+      .then(() => {})
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
     <div className="list">
       <div className="fixed top-0 left-0">
         <Sidebar
+          valueSide={valueSide}
+          setValueSide={setValueSide}
+          mdpPuzzle={mdpPuzzle}
           seconds={seconds}
           setSeconds={setSeconds}
           gameOver={gameOver}

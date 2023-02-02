@@ -1,0 +1,31 @@
+.justePrix {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-image: url("https://i.pinimg.com/originals/ec/c5/00/ecc500bb37a16e96bec4c20e0315109d.gif");
+  background-size: cover;
+
+  .Prix {
+    padding-left: 1em;
+    height: 30%;
+    width: 35em;
+
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(13px);
+    -webkit-backdrop-filter: blur(13px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    h1 {
+      font-size: 2em;
+      font-weight: bold;
+      color: black;
+    }
+    h2 {
+      font-size: 2em;
+      font-weight: bold;
+      color: black;
+    }
+  }
+}

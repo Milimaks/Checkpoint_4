@@ -1,10 +1,10 @@
-import "./dashboard.scss";
+import "./dashboardEnd.scss";
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
-import FormUser from "./FormUser";
+import FormUserEnd from "./FormUserEnd";
 import { AuthContext } from "./OverComponent/authContext";
 
-export default function Dashboard() {
+export default function End() {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -25,7 +25,7 @@ export default function Dashboard() {
 
   return (
     isLoading && (
-      <div className="container">
+      <div className="containerEnd">
         <div className="dashboard  px-4 sm:px-6 lg:px-8">
           <div className="sm:flex sm:items-center" />
           <div className="mt-8 flex flex-col">
@@ -83,7 +83,7 @@ export default function Dashboard() {
                 </div>
               </div>
               <div className="flex justify-center mt-4 sm:mt-0  sm:flex-none">
-                <FormUser />
+                <FormUserEnd />
               </div>
             </div>
           </div>

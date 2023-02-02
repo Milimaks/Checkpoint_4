@@ -25,7 +25,7 @@ const edit = (req, res) => {
   // TODO validations (length, format...)
 
   user.id = parseInt(req.params.id, 10);
-
+  console.log(user);
   models.users
     .update(user)
     .then(([result]) => {
@@ -74,9 +74,11 @@ const readAll = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  const id = parseInt(req.params.id, 10);
+  console.log("back", req.body);
+  const { name, score } = req.body;
+
   models.users
-    .delete(id)
+    .delete(name, score)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
