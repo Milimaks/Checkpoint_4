@@ -25,7 +25,7 @@ function Sidebar({
 
   const { inputActived } = useContext(ContentContext);
 
-  // useEffect(() => {
+  // useEffect(() => {git
   //   axios
   //     .get(`${import.meta.env.VITE_BACKEND_URL}/users/${userData}`)
   //     .then((response) => {

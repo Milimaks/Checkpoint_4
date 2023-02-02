@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function FormUserEnd() {
   //   const [name, setName] = useState();
-
+  const navigate = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -15,7 +16,9 @@ export default function FormUserEnd() {
       .delete(`${import.meta.env.VITE_BACKEND_URL}/users`, {
         data: updatedData,
       })
-      .then(() => {})
+      .then(() => {
+        navigate("/");
+      })
       .catch((error) => {
         console.error(error);
       });

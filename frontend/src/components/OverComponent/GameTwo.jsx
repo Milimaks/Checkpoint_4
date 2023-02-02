@@ -7,6 +7,7 @@ import "react-jigsaw-puzzle/lib/jigsaw-puzzle.css";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../sidebar/Sidebar";
 import "./content.scss";
+import CustomizedDialogs from "./CustomizedDialogs";
 
 import { ContentContext } from "./ContentContext";
 import { AuthContext } from "./authContext";
@@ -89,18 +90,14 @@ function GameTwo() {
           ) : (
             <JigsawPuzzle
               imageSrc="https://img.lemde.fr/2022/12/22/5/0/1730/865/768/384/75/0/e968e4d_1671703423578-b5e.jpeg"
-              rows={1}
-              columns={2}
+              rows={2}
+              columns={1}
               onSolved={Solved}
             />
           )}
           {mdp && (
             <div className="modal">
-              <h1>
-                Bravo ! Tu as trouvé le mot de passe. Pour continuer, j'ai
-                besoin du mot de passe du Player Two{" "}
-              </h1>
-              <input type="text" onChange={(e) => setValue(e.target.value)} />
+              <CustomizedDialogs setValue={setValue} />
             </div>
           )}
         </div>

@@ -10,10 +10,10 @@ function GameOne() {
   const [mdp, setMdp] = useState(false);
   const [valueSide, setValueSide] = useState("");
 
-  const mdpPuzzle = "Serpent";
+  const mdpPuzzle = "Cookie";
   const navigate = useNavigate();
 
-  if (valueSide === "Bernard") {
+  if (valueSide === "Batman") {
     navigate("/end");
   }
 

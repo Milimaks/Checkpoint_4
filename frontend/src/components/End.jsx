@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import FormUserEnd from "./FormUserEnd";
 import { AuthContext } from "./OverComponent/authContext";
+import CustomizedDialogsEnd from "./OverComponent/CustomizedDialogsEnd";
 
 export default function End() {
   const [users, setUsers] = useState([]);
@@ -26,6 +27,8 @@ export default function End() {
   return (
     isLoading && (
       <div className="containerEnd">
+        <CustomizedDialogsEnd />
+
         <div className="dashboard  px-4 sm:px-6 lg:px-8">
           <div className="sm:flex sm:items-center" />
           <div className="mt-8 flex flex-col">
