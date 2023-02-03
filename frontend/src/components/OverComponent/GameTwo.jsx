@@ -14,39 +14,47 @@ import { AuthContext } from "./authContext";
 
 function GameTwo() {
   const [seconds, setSeconds] = useState(300);
-  const [isActived, setIsActived] = useState(true);
   const [count, setCount] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [value, setValue] = useState("");
   const [valueSide, setValueSide] = useState("");
   const [mdp, setMdp] = useState(false);
 
+  const [chrono, setChrono] = useState(true);
+
   const mdpPuzzle = "Versavel";
 
   const navigate = useNavigate();
-
   const { userData } = useContext(AuthContext);
-  const { setInputActived } = useContext(ContentContext);
+  const { setInputActived, setIsScore } = useContext(ContentContext);
+
+  // const image = [
+  //   "https://img.lemde.fr/2022/12/22/5/0/1730/865/768/384/75/0/e968e4d_1671703423578-b5e.jpeg",
+  //   "https://media.discordapp.net/attachments/1032642094789038110/1034486626463776768/drole-dame.png?width=348&height=492",
+  //   "https://static.cnews.fr/sites/default/files/avatar_2_-_date_de_sortie_histoire_casting._tout_savoir_sur_le_film_de_james_cameron_610a65d33f1b6_0.jpeg",
+  //   "https://media.vanityfair.fr/photos/60d36bd2db141fd0eb5b6008/16:9/w_2560%2Cc_limit/vf_main_le_seigneur_des_anneaux_9669.jpeg",
+  // ];
 
   if (value === "Spiderman") {
     navigate("/one");
   }
 
   useEffect(() => {
-    if (isActived) {
+    if (chrono) {
       const timer = setTimeout(() => {
         setCount(count + 1);
-        setIsActived(false);
-      }, 2000);
+        setChrono(false);
+      }, 3000);
       return () => clearTimeout(timer);
     }
-  }, [count, isActived]);
+  }, [count, chrono]);
 
   const Solved = () => {
     setInputActived(true);
     setGameOver(true);
     const id = userData;
     const score = seconds;
+    setIsScore(score);
 
     axios
       .put(`${import.meta.env.VITE_BACKEND_URL}/users/${userData}`, {
@@ -82,7 +90,7 @@ function GameTwo() {
         </div>
       ) : (
         <div className="content pl-[20vw]">
-          {isActived ? (
+          {chrono ? (
             <img
               src="https://img.lemde.fr/2022/12/22/5/0/1730/865/768/384/75/0/e968e4d_1671703423578-b5e.jpeg"
               alt=""
@@ -90,8 +98,8 @@ function GameTwo() {
           ) : (
             <JigsawPuzzle
               imageSrc="https://img.lemde.fr/2022/12/22/5/0/1730/865/768/384/75/0/e968e4d_1671703423578-b5e.jpeg"
-              rows={2}
-              columns={1}
+              rows={4}
+              columns={4}
               onSolved={Solved}
             />
           )}

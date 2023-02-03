@@ -3,6 +3,9 @@ import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import FormUser from "./FormUser";
 import { AuthContext } from "./OverComponent/authContext";
+import trophyicon from "../assets/trophy-icon.svg";
+import ranking from "../assets/ranking.svg";
+import Kirby from "../assets/Kirby.svg";
 
 export default function Dashboard() {
   const [users, setUsers] = useState([]);
@@ -32,7 +35,7 @@ export default function Dashboard() {
             <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                 <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-                  <h1 className="flex justify-center text-sm font-medium text-gray-900">
+                  <h1 className="flex justify-center text-4xl font-medium text-gray-900">
                     TABLEAU DES SCORES
                   </h1>
                   <table className="min-w-full divide-y divide-gray-300">
@@ -42,19 +45,32 @@ export default function Dashboard() {
                           scope="col"
                           className="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-6"
                         >
-                          Rank
+                          <div className="w-full flex justify-between items-center gap-2">
+                            Rank{" "}
+                            <img className=" h-8 w-8" src={ranking} alt="" />
+                          </div>
                         </th>
                         <th
                           scope="col"
                           className="px-4 py-3.5 text-left text-sm font-semibold text-gray-900"
                         >
-                          Score
+                          <div className="w-full flex justify-between items-center gap-2">
+                            Score{" "}
+                            <img
+                              className=" h-10 w-6"
+                              src={trophyicon}
+                              alt=""
+                            />
+                          </div>
                         </th>
                         <th
                           scope="col"
                           className="px-4 py-3.5 text-left text-sm font-semibold text-gray-900"
                         >
-                          Pseudo
+                          <div className="w-full flex justify-between items-center gap-2">
+                            Pseudo{" "}
+                            <img className=" h-10 w-8" src={Kirby} alt="" />
+                          </div>
                         </th>
                       </tr>
                     </thead>

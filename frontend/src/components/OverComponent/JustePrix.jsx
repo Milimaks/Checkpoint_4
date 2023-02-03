@@ -2,15 +2,18 @@
 /* eslint-disable react/prop-types */
 import { useState, useContext } from "react";
 import "./content.scss";
+import axios from "axios";
 import "./justePrix.scss";
 import { ContentContext } from "./ContentContext";
+import { AuthContext } from "./authContext";
 
-function JustePrix({ setGameOver }) {
+function JustePrix({ setGameOver, seconds }) {
   const [prix, setPrix] = useState(Math.floor(Math.random() * 100) + 1);
   const [inputValue, setInputValue] = useState("");
   const [message, setMessage] = useState("");
 
-  const { setInputActived } = useContext(ContentContext);
+  const { setIsScore, isScore, setInputActived } = useContext(ContentContext);
+  const { userData } = useContext(AuthContext);
 
   function handleChange(e) {
     setInputValue(e.target.value);
@@ -23,6 +26,20 @@ function JustePrix({ setGameOver }) {
       setMessage("Bravo! Vous avez trouvé le bon prix!");
       setInputActived(true);
       setGameOver(true);
+      const id = userData;
+
+      const score = seconds + isScore;
+      setIsScore(score);
+
+      axios
+        .put(`${import.meta.env.VITE_BACKEND_URL}/users/${userData}`, {
+          id,
+          score,
+        })
+        .then(() => {})
+        .catch((error) => {
+          console.error(error);
+        });
     } else if (guess > prix) {
       setMessage("Le prix est plus bas");
     } else {

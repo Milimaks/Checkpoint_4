@@ -32,7 +32,7 @@ function GameOne() {
         />
       </div>
       <div className="content pl-[20vw]">
-        <JustePrix setGameOver={setGameOver} />
+        <JustePrix setGameOver={setGameOver} seconds={seconds} />
       </div>
     </div>
   );

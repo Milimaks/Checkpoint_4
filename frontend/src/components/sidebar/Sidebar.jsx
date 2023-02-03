@@ -42,7 +42,7 @@ function Sidebar({
     if (inputActived === false && seconds > 0) {
       interval = setInterval(() => {
         if (seconds <= 280) {
-          setSeconds((second) => second - 8);
+          setSeconds((second) => second - 4);
         } else if (seconds <= 290) {
           setSeconds((second) => second - 2);
         } else {

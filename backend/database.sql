@@ -9,7 +9,7 @@ CREATE TABLE
 
 INSERT INTO
     `checkpoint4`.`users` (`id`, `name`, `score`)
-VALUES ('1', 'Al456', '3500');
+VALUES ('1', 'Al456', '120');
 
 INSERT INTO
     `checkpoint4`.`users` (`id`, `name`, `score`)
@@ -21,7 +21,7 @@ VALUES ('3', 'Bernard', '1');
 
 INSERT INTO
     `checkpoint4`.`users` (`id`, `name`, `score`)
-VALUES ('4', 'Léon Timmer', '999');
+VALUES ('4', 'Léon Timmer', '99999');
 
 INSERT INTO
     `checkpoint4`.`users` (`id`, `name`, `score`)

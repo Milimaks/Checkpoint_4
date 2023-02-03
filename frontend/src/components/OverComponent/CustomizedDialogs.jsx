@@ -12,9 +12,12 @@ export default function CustomizedDialogs({ setValue }) {
     <Transition.Root show={open} as={Fragment}>
       <Dialog
         as="div"
-        className="relative z-10"
+        className="relative z-10 "
         initialFocus={cancelButtonRef}
-        onClose={setOpen}
+        onClose={(event) => {
+          event.stopPropagation();
+          setOpen(false);
+        }}
       >
         <Transition.Child
           as={Fragment}

@@ -5,13 +5,16 @@ export const ContentContext = createContext();
 
 export function ContentContextProvider({ children }) {
   const [inputActived, setInputActived] = useState(false);
+  const [isScore, setIsScore] = useState(0);
 
   const value = useMemo(
     () => ({
       inputActived,
       setInputActived,
+      isScore,
+      setIsScore,
     }),
-    [inputActived, setInputActived]
+    [inputActived, setInputActived, isScore, setIsScore]
   );
   return (
     <ContentContext.Provider value={value}>{children}</ContentContext.Provider>

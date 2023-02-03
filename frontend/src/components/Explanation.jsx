@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Explanation() {
   return (
-    <div className="explanation">
+    <div className="explanation" scroll="no">
       <div className="explanation_modal">
         <h1>Bonjour et bienvenue sur ce site plutôt bancal !</h1>
         <br />
@@ -12,7 +12,7 @@ function Explanation() {
         <p>
           Tout va bien se passer tant que tu ne regardes pas le code, que tu ne
           rafraichis pas la page et que tu fais fonctionner ton cerveau un
-          minimum
+          minimum !
         </p>
         <br />
         <br />
@@ -21,7 +21,12 @@ function Explanation() {
           suite des autres. Plus tu es rapide, plus ton score augmente. Alors
           soit rapide, soit fort, soit les deux !
         </p>
-        <p>P.S. N'oublie pas d'appuyer sur le cachet pour démarrer</p>
+        <br />
+
+        <p>
+          P.S. Rafraichis quand même si tu ne vois pas ton pseudo affiché et
+          n'oublie pas d'appuyer sur le cachet pour démarrer
+        </p>
         <Link to="/two" className="link">
           <p className="cachet">
             <img src="https://i.postimg.cc/4NBYNqCR/22.png" alt="" />
